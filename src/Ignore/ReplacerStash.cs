@@ -47,6 +47,17 @@ namespace Ignore
             replacer: match => string.Empty);
 
         /// <summary>
+        /// From gitignore:
+        /// A trailing "/**" matches everything inside. For example,
+        /// "abc/**" matches all files inside directory "abc",
+        /// relative to the location of the .gitignore file, with infinite depth.
+        /// </summary>
+        public static readonly Replacer TrailingDoubleStar = new Replacer(
+            name: nameof(TrailingDoubleStar),
+            regex: new Regex(@"\*\*$", RegexOptions.Compiled),
+            replacer: match => @".*$");
+
+        /// <summary>
         /// If there is a separator at the beginning or middle (or both) of the pattern,
         /// then the pattern is relative to the directory level of the particular .gitignore file itself.
         /// Otherwise the pattern may also match at any level below the .gitignore level.
@@ -86,6 +97,7 @@ namespace Ignore
         /// From gitignore:
         /// An asterisk "*" matches anything except a slash.
         ///
+        /// Replaces single * with anything other than a /.
         /// </summary>
         public static readonly Replacer SingleStar = new Replacer(
             name: nameof(SingleStar),
