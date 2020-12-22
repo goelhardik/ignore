@@ -1,0 +1,13 @@
+name: PR build
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs:
+      using: 'docker'
+      image: 'Dockerfile'
+      

@@ -1,9 +1,6 @@
-name: .NET
+name: Ignore NuGet pack
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
