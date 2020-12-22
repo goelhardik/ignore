@@ -7,23 +7,29 @@
     {
         private readonly List<IgnoreRule> rules;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ignore"/> class.
+        /// </summary>
         public Ignore()
         {
             rules = new List<IgnoreRule>();
-            OriginalPatterns = new List<string>();
+            OriginalRules = new List<string>();
         }
 
-        public List<string> OriginalPatterns { get; }
+        /// <summary>
+        /// Gets the list of the original rules passed in to the class ctor.
+        /// </summary>
+        public List<string> OriginalRules { get; }
 
         /// <summary>
         /// Adds the given pattern to this <see cref="Ignore"/> instance.
         /// </summary>
-        /// <param name="pattern">Gitignore style pattern string.</param>
+        /// <param name="rule">Gitignore style pattern string.</param>
         /// <returns>Current instance of <see cref="Ignore"/>.</returns>
-        public Ignore Add(string pattern)
+        public Ignore Add(string rule)
         {
-            OriginalPatterns.Add(pattern);
-            rules.Add(new IgnoreRule(pattern));
+            OriginalRules.Add(rule);
+            rules.Add(new IgnoreRule(rule));
             return this;
         }
 
@@ -35,30 +41,36 @@
         public Ignore Add(IEnumerable<string> patterns)
         {
             var patternList = patterns.ToList();
-            OriginalPatterns.AddRange(patternList);
+            OriginalRules.AddRange(patternList);
             patternList.ForEach(pattern => rules.Add(new IgnoreRule(pattern)));
             return this;
         }
 
+        /// <summary>
+        /// Test whether the input path is ignored as per the rules
+        /// specified in the class ctor.
+        /// </summary>
+        /// <param name="path">File path to consider.</param>
+        /// <returns>A boolean indicating if the path is ignored.</returns>
+        public bool IsIgnored(string path)
+        {
+            var ignore = IsPathIgnored(path);
+
+            return ignore;
+        }
+
+        /// <summary>
+        /// Filters the input paths as per the rules specified in the
+        /// class ctor.
+        /// </summary>
+        /// <param name="paths">List of input file paths.</param>
+        /// <returns>List of filtered paths (the paths that are not ignored).</returns>
         public IEnumerable<string> Filter(IEnumerable<string> paths)
         {
             var filteredPaths = new List<string>();
             foreach (var path in paths)
             {
-                var ignore = false;
-                foreach (var rule in rules)
-                {
-                    var currentMatch = rule.IsMatch(path);
-                    if (currentMatch && !rule.Negate)
-                    {
-                        ignore = true;
-                    }
-                    else if (currentMatch && ignore && rule.Negate)
-                    {
-                        ignore = false;
-                    }
-                }
-
+                var ignore = IsPathIgnored(path);
                 if (ignore == false)
                 {
                     filteredPaths.Add(path);
@@ -66,6 +78,25 @@
             }
 
             return filteredPaths;
+        }
+
+        private bool IsPathIgnored(string path)
+        {
+            var ignore = false;
+            foreach (var rule in rules)
+            {
+                var currentMatch = rule.IsMatch(path);
+                if (currentMatch && !rule.Negate)
+                {
+                    ignore = true;
+                }
+                else if (currentMatch && ignore && rule.Negate)
+                {
+                    ignore = false;
+                }
+            }
+
+            return ignore;
         }
     }
 }
