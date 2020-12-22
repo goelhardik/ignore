@@ -28,4 +28,4 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release  /p:PublicRelease=true
     - name: Push package to NuGet
-      run: dotnet nuget push .\src\Ignore\bin\Release\Ignore.*.nupkg --api-key {{secrets.nugetKey}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push .\src\Ignore\bin\Release\Ignore.*.nupkg --api-key ${{ secrets.nugetKey }} --source https://api.nuget.org/v3/index.json
