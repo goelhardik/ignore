@@ -80,9 +80,8 @@ fo*b
             @"""
 # escaped spaces
 /fo\ b
-spacebar\ 
 """,
-            new[] { "foobar", "bar", "fo b", "spacebar", "spacebar " });
+            new[] { "foobar", "bar", "fo b", "spacebar" });
 
         [Fact]
         public void QuestionMark() => GitBasedTest(
