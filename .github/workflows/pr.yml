@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  PR Build:
+  PR:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
