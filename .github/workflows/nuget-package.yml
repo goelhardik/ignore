@@ -1,7 +1,8 @@
 name: Ignore NuGet pack
 
 on:
-  pull_request:
+  workflow_dispatch:
+  push:
     branches: [ main ]
 
 jobs:
