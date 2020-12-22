@@ -1,16 +1,11 @@
 namespace Ignore
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text.RegularExpressions;
 
     public class IgnoreRule
     {
-#pragma warning disable 414
-        private readonly bool negate;
-#pragma warning restore 414
-
-        private readonly Regex parsedRegex = null;
+        private readonly Regex parsedRegex;
 
         private readonly List<Replacer> replacers = new List<Replacer>
         {
@@ -62,7 +57,7 @@ namespace Ignore
             // is negate rule
             if (pattern.StartsWith('!'))
             {
-                negate = true;
+                Negate = true;
                 pattern = pattern.Substring(1);
             }
 
@@ -74,9 +69,11 @@ namespace Ignore
             parsedRegex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
         }
 
-        public bool IsIgnored(string input)
+        public bool Negate { get; }
+
+        public bool IsMatch(string input)
         {
-            return parsedRegex != null && (parsedRegex.IsMatch(input) && !negate);
+            return parsedRegex != null && parsedRegex.IsMatch(input);
         }
     }
 }

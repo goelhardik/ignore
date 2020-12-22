@@ -1,12 +1,12 @@
 namespace Ignore.Tests
 {
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using PrQuantifier.Common.Tests;
     using Xunit;
 
+    [ExcludeFromCodeCoverage]
     public class GitBasedTests : IClassFixture<GitRepoFixture>, IDisposable
     {
         private readonly GitRepoFixture gitFixture;
@@ -165,12 +165,49 @@ src/foo/
             new[] { "src/foo/" });
 
         [Fact]
-        public void SimpleNegate() => GitBasedTest(
+        public void NoopNegate() => GitBasedTest(
             @"""
 # negate
 !foo
 """,
-            new[] { "foo", "bar", "src/foo/" });
+            new[] { "foo", "bar", "src/foo/tar", "har/foo", "src/bar/foo", "har/bar/foo/tar" });
+
+        [Fact]
+        public void SimpleNegate() => GitBasedTest(
+            @"""
+# negate
+foo
+!foo
+""",
+            new[] { "foo", "bar" });
+
+        [Fact]
+        public void SimpleNegate_2() => GitBasedTest(
+            @"""
+# negate
+foo
+!foo
+""",
+            new[] { "foo", "bar", "src/foo", "src/bar/foo" });
+
+        [Fact]
+        public void ComplexNegate() => GitBasedTest(
+            @"""
+# negate
+/*
+!/foo
+/foo/*
+!/foo/bar
+""",
+            new[] { "foo/bar", "bar", "src/foo", "src/bar/foo/bar" });
+
+        [Fact]
+        public void Range() => GitBasedTest(
+            @"""
+# range regex
+*.py[cod]
+""",
+            new[] { "foo.py", "bar.p", "foo.pyc", "foo.pyco", "foo.pyd" });
 
         public void Dispose()
         {

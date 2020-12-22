@@ -48,9 +48,14 @@
                 var ignore = false;
                 foreach (var rule in rules)
                 {
-                    if (rule.IsIgnored(path))
+                    var currentMatch = rule.IsMatch(path);
+                    if (currentMatch && !rule.Negate)
                     {
                         ignore = true;
+                    }
+                    else if (currentMatch && ignore && rule.Negate)
+                    {
+                        ignore = false;
                     }
                 }
 
