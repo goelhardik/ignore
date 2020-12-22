@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  Build, pack and publish:
 
     runs-on: windows-latest
 
