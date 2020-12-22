@@ -14,7 +14,22 @@ namespace Ignore
 
         private readonly List<Replacer> replacers = new List<Replacer>
         {
-            ReplacerStash.TrailingSpaces
+            ReplacerStash.TrailingSpaces,
+            ReplacerStash.EscapedSpaces,
+
+            // ReplacerStash.Metacharacters,
+            ReplacerStash.QuestionMark,
+            ReplacerStash.SingleStar,
+            ReplacerStash.LeadingDoubleStar,
+            ReplacerStash.LeadingSlash,
+
+            // ReplacerStash.MetacharacterSlashAfterLeadingSlash,
+            ReplacerStash.MiddleDoubleStar,
+            ReplacerStash.TrailingDoubleStar,
+            ReplacerStash.MiddleSlash,
+            ReplacerStash.TrailingSlash,
+            ReplacerStash.NoTrailingSlash,
+            ReplacerStash.Ending
         };
 
         /// <summary>
@@ -59,9 +74,9 @@ namespace Ignore
             parsedRegex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
         }
 
-        public bool IsIgnored(string pattern)
+        public bool IsIgnored(string input)
         {
-            return parsedRegex != null && parsedRegex.IsMatch(pattern);
+            return parsedRegex != null && (parsedRegex.IsMatch(input) && !negate);
         }
     }
 }
