@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  PR:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -19,3 +19,15 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: false
+          tags: ignore/app:latest
+  
+  Tests:
+    runs-on: ubuntu-latest
+    container:
+      image: ignore/app:latest
+      options: -v ./coverage/:/coverage/:rw
+      env:
+        - CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
+    steps:
+      - name: Push coverage to codecov
+        run: bash <(curl -s https://codecov.io/bash) -s ./coverage
