@@ -27,7 +27,7 @@ jobs:
       image: ignore/app:latest
       options: -v ./coverage/:/coverage/:rw
       env:
-        - CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
+        - CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     steps:
       - name: Push coverage to codecov
         run: bash <(curl -s https://codecov.io/bash) -s ./coverage
