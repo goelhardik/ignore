@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+      - name: Build and test
+        id: docker_build
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          docker build -t ignore/app:latest .
+          mkdir ${{ github.workspace }}/coverage
+          docker run -v "${{ github.workspace }}/coverage":"/coverage/" ignore/app:latest
+          bash <(curl -s https://codecov.io/bash)
