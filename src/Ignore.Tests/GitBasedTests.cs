@@ -72,6 +72,20 @@ foo/
             new[] { ".foo/bar", ".foo/.foo/bar", ".foo/har" });
 
         [Fact]
+        public void EscapedBang() => GitBasedTest(
+            @"""
+\!.foo/*
+""",
+            new[] { "!.foo/bar", ".foo/.foo/bar", ".foo/har" });
+
+        [Fact]
+        public void EscapedHash() => GitBasedTest(
+            @"""
+\#.foo/*
+""",
+            new[] { "!#foo/bar", ".foo/.foo/bar", "#.foo/har" });
+
+        [Fact]
         public void SingleStar() => GitBasedTest(
             @"""
 # * ignores everything
