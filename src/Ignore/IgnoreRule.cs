@@ -12,17 +12,21 @@ namespace Ignore
             ReplacerStash.TrailingSpaces,
             ReplacerStash.EscapedSpaces,
 
+            // probably not needed
             // ReplacerStash.Metacharacters,
             ReplacerStash.QuestionMark,
             ReplacerStash.SingleStar,
             ReplacerStash.LeadingDoubleStar,
             ReplacerStash.LeadingSlash,
 
+            // probably not needed
             // ReplacerStash.MetacharacterSlashAfterLeadingSlash,
             ReplacerStash.MiddleDoubleStar,
             ReplacerStash.TrailingDoubleStar,
             ReplacerStash.MiddleSlash,
-            ReplacerStash.TrailingSlash,
+
+            // probably not needed
+            // ReplacerStash.TrailingSlash,
             ReplacerStash.NoTrailingSlash,
             ReplacerStash.Ending
         };

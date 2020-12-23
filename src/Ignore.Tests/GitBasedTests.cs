@@ -51,6 +51,27 @@ foo/bar
             new[] { "src/foo/bar", "foo/bar/", "foo/bar/char", "src/bar/char", "a/foo/bar/char" });
 
         [Fact]
+        public void SimpleIgnore_Dir() => GitBasedTest(
+            @"""
+foo/
+""",
+            new[] { "foo/bar", "bar/foo", "foo/har", "tar/foo/bar", "tar/bar/foo" });
+
+        [Fact]
+        public void SimpleIgnore_Dotfiles() => GitBasedTest(
+            @"""
+.foo/
+""",
+            new[] { ".foo/bar", ".bar/foo", ".foo/har", "tar/.foo/bar", "tar/bar/.foo" });
+
+        [Fact]
+        public void SimpleIgnore_Dotfiles_WithStar() => GitBasedTest(
+            @"""
+.foo/*
+""",
+            new[] { ".foo/bar", ".foo/.foo/bar", ".foo/har" });
+
+        [Fact]
         public void SingleStar() => GitBasedTest(
             @"""
 # * ignores everything
