@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  CI:
+  NuGetPack:
 
     runs-on: windows-latest
 

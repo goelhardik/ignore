@@ -7,15 +7,18 @@ on:
     branches: [ main ]
 
 jobs:
-  PR:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
       - name: Build and test
         id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          push: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          docker build -t ignore/app:latest .
+          mkdir ${{ github.workspace }}/coverage
+          docker run -v "${{ github.workspace }}/coverage":"/coverage/" ignore/app:latest
+          bash <(curl -s https://codecov.io/bash)
