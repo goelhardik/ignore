@@ -24,4 +24,6 @@ jobs:
           docker run -v coverage:/coverage/ ignore/app:latest
           ls -l
           ls -l coverage
+          ls -l /__w
+          ls -l /__w/coverage
           bash <(curl -s https://codecov.io/bash)
