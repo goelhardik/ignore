@@ -15,7 +15,8 @@ namespace Ignore
             // probably not needed
             // ReplacerStash.Metacharacters,
             ReplacerStash.QuestionMark,
-            ReplacerStash.SingleStar,
+            ReplacerStash.NonLeadingSingleStar,
+            ReplacerStash.LeadingSingleStar,
             ReplacerStash.LeadingDoubleStar,
             ReplacerStash.LeadingSlash,
 
