@@ -19,12 +19,10 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
           docker build -t ignore/app:latest .
-          mkdir coverage
-          chmod 777 coverage
+          mkdir ${{ github.workspace }}/coverage
+          chmod 777 ${{ github.workspace }}/coverage
           pwd
-          docker run -v "coverage":"/coverage/" ignore/app:latest
+          docker run -v "${{ github.workspace }}/coverage":"/coverage/" ignore/app:latest
           ls -l
-          ls -l coverage
-          ls -l /__w
-          ls -l /__w/coverage
+          ls -l ${{ github.workspace }}/coverage
           bash <(curl -s https://codecov.io/bash)
