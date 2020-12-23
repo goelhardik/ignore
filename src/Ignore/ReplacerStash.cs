@@ -103,7 +103,7 @@ namespace Ignore
         /// </summary>
         public static readonly Replacer NoTrailingSlash = new Replacer(
             name: nameof(NoTrailingSlash),
-            regex: new Regex(@"([^/])$"),
+            regex: new Regex(@"([^/$]+)$"),
             replacer: match => $@"{match.Groups[1]}(/.*)?$");
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Ignore
 
         public static readonly Replacer Ending = new Replacer(
             name: nameof(Ending),
-            regex: new Regex(@"([^$]+)$"),
+            regex: new Regex(@"([^/$]+)$"),
             replacer: match => $"{match.Groups[1]}$");
     }
 }
