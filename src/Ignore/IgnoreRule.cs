@@ -51,15 +51,13 @@ namespace Ignore
                 return;
             }
 
-            // account for escaped # and !
-            // remove the leading backslash
+            // Account for escaped # and !, remove the leading backslash.
+            // Also either a pattern will start with \ or with !
             if (pattern.StartsWith("\\!") || pattern.StartsWith("\\#"))
             {
                 pattern = pattern.Substring(1);
             }
-
-            // is negate rule
-            if (pattern.StartsWith('!'))
+            else if (pattern.StartsWith('!'))
             {
                 Negate = true;
                 pattern = pattern.Substring(1);
