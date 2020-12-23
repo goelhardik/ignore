@@ -21,7 +21,7 @@ jobs:
           docker build -t ignore/app:latest .
           mkdir coverage
           chmod 777 coverage
-          docker run -v coverage:/coverage/:rw ignore/app:latest
+          docker run -v coverage:/coverage/ ignore/app:latest
           ls -l
           ls -l coverage
           bash <(curl -s https://codecov.io/bash)
