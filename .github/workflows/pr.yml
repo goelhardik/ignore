@@ -20,9 +20,5 @@ jobs:
         run: |
           docker build -t ignore/app:latest .
           mkdir ${{ github.workspace }}/coverage
-          chmod 777 ${{ github.workspace }}/coverage
-          pwd
           docker run -v "${{ github.workspace }}/coverage":"/coverage/" ignore/app:latest
-          ls -l
-          ls -l ${{ github.workspace }}/coverage
           bash <(curl -s https://codecov.io/bash)
