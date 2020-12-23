@@ -21,7 +21,8 @@ jobs:
           docker build -t ignore/app:latest .
           mkdir coverage
           chmod 777 coverage
-          docker run -v coverage:/coverage/ ignore/app:latest
+          pwd
+          docker run -v "coverage":"/coverage/" ignore/app:latest
           ls -l
           ls -l coverage
           ls -l /__w
