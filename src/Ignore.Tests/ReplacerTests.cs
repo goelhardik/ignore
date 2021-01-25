@@ -16,7 +16,7 @@ namespace Ignore.Tests
                 new object[] { ReplacerStash.QuestionMark, @"a?", @"a[^/]" },
                 new object[] { ReplacerStash.LeadingSlash, @"/a/b", @"^a/b" },
                 new object[] { ReplacerStash.MetacharacterSlashAfterLeadingSlash, @"a/b", @"a\/b" },
-                new object[] { ReplacerStash.LeadingDoubleStar, @"**/a/b", @"a/b" },
+                new object[] { ReplacerStash.LeadingDoubleStar, @"**/a/b", @".*a/b" },
                 new object[] { ReplacerStash.MiddleDoubleStar, @"**/a/b", @"**/a/b" },
                 new object[] { ReplacerStash.MiddleDoubleStar, @"/a/b/**", @"/a/b/**" },
                 new object[] { ReplacerStash.MiddleDoubleStar, @"/a/**/b/**", @"/a/.*/?b/**" },

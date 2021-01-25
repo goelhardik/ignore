@@ -194,6 +194,14 @@ foo/**/**/bar
             new[] { "foo/bar", "src/foo/tar/bar", "foo/har/char/tar/bar", "foo/tar/bar", "foobar" });
 
         [Fact]
+        public void MiddleDoubleStar_Complex2() => GitBasedTest(
+            @"""
+# middle **
+**/test/**/*.json
+""",
+            new[] { "foo/test/unit/bar/car.json", "foo/test/tar.json", "src/foo/tar/car.json" });
+
+        [Fact]
         public void TrailingDoubleStar() => GitBasedTest(
             @"""
 # trailing **
