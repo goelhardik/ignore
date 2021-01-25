@@ -47,7 +47,7 @@ namespace Ignore
         public static readonly Replacer LeadingDoubleStar = new Replacer(
             name: nameof(LeadingDoubleStar),
             regex: new Regex(@"^\*\*/", RegexOptions.Compiled),
-            replacer: match => string.Empty);
+            replacer: match => @".*");
 
         /// <summary>
         /// From gitignore:
