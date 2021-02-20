@@ -72,6 +72,41 @@ foo/
             new[] { ".foo/bar", ".foo/.foo/bar", ".foo/har" });
 
         [Fact]
+        public void StartsWithStar() => GitBasedTest(
+            @"""
+*.cs
+""",
+            new[] { "foo.cs", "foo/bar/foo.cs", "foo/bar/bar.csproj" });
+
+        [Fact]
+        public void StartsWithStar_Negated() => GitBasedTest(
+            @"""
+!*.cs
+""",
+            new[] { "foo.cs", "foo/bar/foo.cs", "foo/bar/bar.csproj" });
+
+        [Fact]
+        public void StartsWithStar_LeadingSlash() => GitBasedTest(
+            @"""
+/*.cs
+""",
+            new[] { "foo.cs", "foo/bar/foo.cs", "foo/bar/bar.csproj" });
+
+        [Fact]
+        public void SubdirStartsWithStar() => GitBasedTest(
+            @"""
+foo/*.cs
+""",
+            new[] { "foo.cs", "foo/bar/foo.cs", "foo/foo.cs", "foo/bar/bar.csproj" });
+
+        [Fact]
+        public void TrailingStar() => GitBasedTest(
+            @"""
+foo*
+""",
+            new[] { "fooc", "foo/bar/foo", "foo/foob.cs", "foo/bar/bar.csproj" });
+
+        [Fact]
         public void EscapedBang() => GitBasedTest(
             @"""
 \!.foo/*
@@ -157,6 +192,14 @@ foo/**/bar
 foo/**/**/bar
 """,
             new[] { "foo/bar", "src/foo/tar/bar", "foo/har/char/tar/bar", "foo/tar/bar", "foobar" });
+
+        [Fact]
+        public void MiddleDoubleStar_Complex2() => GitBasedTest(
+            @"""
+# middle **
+**/test/**/*.json
+""",
+            new[] { "foo/test/unit/bar/car.json", "foo/test/tar.json", "src/foo/tar/car.json" });
 
         [Fact]
         public void TrailingDoubleStar() => GitBasedTest(

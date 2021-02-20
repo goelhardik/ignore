@@ -47,7 +47,7 @@ namespace Ignore
         public static readonly Replacer LeadingDoubleStar = new Replacer(
             name: nameof(LeadingDoubleStar),
             regex: new Regex(@"^\*\*/", RegexOptions.Compiled),
-            replacer: match => string.Empty);
+            replacer: match => @".*");
 
         /// <summary>
         /// From gitignore:
@@ -111,11 +111,17 @@ namespace Ignore
         /// An asterisk "*" matches anything except a slash.
         ///
         /// Replaces single * with anything other than a /.
+        /// Unless the star is in the beginning of the pattern.
         /// </summary>
-        public static readonly Replacer SingleStar = new Replacer(
-            name: nameof(SingleStar),
-            regex: new Regex(@"(?<!\*)\*(?!\*)"),
+        public static readonly Replacer NonLeadingSingleStar = new Replacer(
+            name: nameof(NonLeadingSingleStar),
+            regex: new Regex(@"(?<!^)(?<!\*)\*(?!\*)"),
             replacer: match => @"[^/]*");
+
+        public static readonly Replacer LeadingSingleStar = new Replacer(
+            name: nameof(LeadingSingleStar),
+            regex: new Regex(@"^(?<!\*)\*(?!\*)"),
+            replacer: match => @".*");
 
         public static readonly Replacer Ending = new Replacer(
             name: nameof(Ending),

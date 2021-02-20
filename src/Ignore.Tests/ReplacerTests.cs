@@ -16,7 +16,7 @@ namespace Ignore.Tests
                 new object[] { ReplacerStash.QuestionMark, @"a?", @"a[^/]" },
                 new object[] { ReplacerStash.LeadingSlash, @"/a/b", @"^a/b" },
                 new object[] { ReplacerStash.MetacharacterSlashAfterLeadingSlash, @"a/b", @"a\/b" },
-                new object[] { ReplacerStash.LeadingDoubleStar, @"**/a/b", @"a/b" },
+                new object[] { ReplacerStash.LeadingDoubleStar, @"**/a/b", @".*a/b" },
                 new object[] { ReplacerStash.MiddleDoubleStar, @"**/a/b", @"**/a/b" },
                 new object[] { ReplacerStash.MiddleDoubleStar, @"/a/b/**", @"/a/b/**" },
                 new object[] { ReplacerStash.MiddleDoubleStar, @"/a/**/b/**", @"/a/.*/?b/**" },
@@ -34,11 +34,14 @@ namespace Ignore.Tests
                 new object[] { ReplacerStash.NoTrailingSlash, @"/a", @"/a(/.*)?$" },
                 new object[] { ReplacerStash.NoTrailingSlash, @"a", @"a(/.*)?$" },
                 new object[] { ReplacerStash.NoTrailingSlash, @"a/b/c", @"a/b/c(/.*)?$" },
-                new object[] { ReplacerStash.SingleStar, @"a/*/c", @"a/[^/]*/c" },
-                new object[] { ReplacerStash.SingleStar, @"a/*.c", @"a/[^/]*.c" },
-                new object[] { ReplacerStash.SingleStar, @"a/**/c", @"a/**/c" },
-                new object[] { ReplacerStash.SingleStar, @"**/c", @"**/c" },
-                new object[] { ReplacerStash.SingleStar, @"*.c", @"[^/]*.c" },
+                new object[] { ReplacerStash.NonLeadingSingleStar, @"a/*/c", @"a/[^/]*/c" },
+                new object[] { ReplacerStash.NonLeadingSingleStar, @"a/*.c", @"a/[^/]*.c" },
+                new object[] { ReplacerStash.NonLeadingSingleStar, @"a/**/c", @"a/**/c" },
+                new object[] { ReplacerStash.NonLeadingSingleStar, @"**/c", @"**/c" },
+                new object[] { ReplacerStash.NonLeadingSingleStar, @"*.c", @"*.c" },
+                new object[] { ReplacerStash.LeadingSingleStar, @"*.c", @".*.c" },
+                new object[] { ReplacerStash.LeadingSingleStar, @"**/c", @"**/c" },
+                new object[] { ReplacerStash.LeadingSingleStar, @"a*/c", @"a*/c" },
             };
 
         [Theory]
