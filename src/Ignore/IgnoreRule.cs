@@ -47,7 +47,7 @@ namespace Ignore
             }
 
             // A line starting with # serves as a comment. Put a backslash ("\") in front of the first hash for patterns that begin with a hash.
-            if (pattern.StartsWith('#'))
+            if (pattern.StartsWith("#"))
             {
                 return;
             }
@@ -58,7 +58,7 @@ namespace Ignore
             {
                 pattern = pattern.Substring(1);
             }
-            else if (pattern.StartsWith('!'))
+            else if (pattern.StartsWith("!"))
             {
                 Negate = true;
                 pattern = pattern.Substring(1);
