@@ -53,7 +53,7 @@
 
         public IEnumerable<StatusEntry> GetUntrackedFiles()
         {
-            var repo = new Repository(RepoPath);
+            using var repo = new Repository(RepoPath);
             var status = repo.RetrieveStatus();
             return status.Untracked;
         }
