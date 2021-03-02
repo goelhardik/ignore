@@ -79,7 +79,7 @@ namespace Ignore
         /// </summary>
         public static readonly Replacer MiddleSlash = new Replacer(
             name: nameof(MiddleSlash),
-            regex: new Regex(@"^([^/]+/[^/]+)"),
+            regex: new Regex(@"^([^/\^]+/[^/]+)"),
             replacer: match => $"^{match.Groups[1]}");
 
         /// <summary>

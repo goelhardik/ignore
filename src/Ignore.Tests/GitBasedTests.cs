@@ -104,7 +104,7 @@ foo/*.cs
             @"""
 foo*
 """,
-            new[] { "fooc", "foo/bar/foo", "foo/foob.cs", "foo/bar/bar.csproj" });
+            new[] { "fooc", "foo/bar/foo", "foo/foob.cs", "foo/bar/bar.csproj", "bar/foo" });
 
         [Fact]
         public void EscapedBang() => GitBasedTest(
