@@ -127,5 +127,10 @@ namespace Ignore
             name: nameof(Ending),
             regex: new Regex(@"([^/$]+)$"),
             replacer: match => $"{match.Groups[1]}$");
+
+        public static readonly Replacer Dot = new Replacer(
+            name: nameof(Dot),
+            regex: new Regex(@"\."),
+            replacer: match => @"\.");
     }
 }

@@ -45,6 +45,7 @@ namespace Ignore.Tests
                 new object[] { ReplacerStash.LeadingSingleStar, @"*.c", @".*.c" },
                 new object[] { ReplacerStash.LeadingSingleStar, @"**/c", @"**/c" },
                 new object[] { ReplacerStash.LeadingSingleStar, @"a*/c", @"a*/c" },
+                new object[] { ReplacerStash.Dot, @".a*./c", @"\.a*\./c" },
             };
 
         [Theory]
