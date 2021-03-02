@@ -5,6 +5,11 @@ namespace Ignore
 
     public static class ReplacerStash
     {
+        public static readonly Replacer LiteralDots = new Replacer(
+            name: nameof(LiteralDots),
+            regex: new Regex(@"\.", RegexOptions.Compiled),
+            replacer: match => "\\.");
+
         public static readonly Replacer TrailingSpaces = new Replacer(
             name: nameof(TrailingSpaces),
             regex: new Regex(@"\\?\s+$", RegexOptions.Compiled),

@@ -9,6 +9,7 @@ namespace Ignore
 
         private readonly List<Replacer> replacers = new List<Replacer>
         {
+            ReplacerStash.LiteralDots,
             ReplacerStash.TrailingSpaces,
             ReplacerStash.EscapedSpaces,
             ReplacerStash.Dot,

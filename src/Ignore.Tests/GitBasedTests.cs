@@ -69,7 +69,21 @@ foo/
             @"""
 .foo/*
 """,
-            new[] { ".foo/bar", ".foo/.foo/bar", ".foo/har" });
+            new[] { ".foo/bar", ".foo/.foo/bar", ".foo/har", "food" });
+
+        [Fact]
+        public void SimpleIgnore_Dotfiles_WithStar2() => GitBasedTest(
+            @"""
+.vs/*
+""",
+            new[] { "foo/.vs/a.txt", ".vs/a.txt", ".vs/bar/a.txt" });
+
+        [Fact]
+        public void SimpleIgnore_Dotfiles_WithStar3() => GitBasedTest(
+            @"""
+*.mm.*
+""",
+            new[] { "file.mm", "commonFile.txt" });
 
         [Fact]
         public void SimpleIgnore_Dotfiles_WithStar2() => GitBasedTest(
@@ -97,14 +111,14 @@ foo/
             @"""
 /*.cs
 """,
-            new[] { "foo.cs", "foo/bar/foo.cs", "foo/bar/bar.csproj" });
+            new[] { "foo.cs", "foo/bar/foo.cs", "foo/bar/bar.csproj", "foo_cs" });
 
         [Fact]
         public void SubdirStartsWithStar() => GitBasedTest(
             @"""
 foo/*.cs
 """,
-            new[] { "foo.cs", "foo/bar/foo.cs", "foo/foo.cs", "foo/bar/bar.csproj" });
+            new[] { "foo.cs", "foo/bar/foo.cs", "foo/foo.cs", "foo/bar/bar.csproj", "foo/foo_cs" });
 
         [Fact]
         public void TrailingStar() => GitBasedTest(

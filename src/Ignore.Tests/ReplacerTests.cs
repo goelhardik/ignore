@@ -10,6 +10,8 @@ namespace Ignore.Tests
         public static IEnumerable<object[]> Data =>
             new List<object[]>
             {
+                new object[] { ReplacerStash.LiteralDots, @".foo", "\\.foo" },
+                new object[] { ReplacerStash.LiteralDots, @".foo/.bar", "\\.foo/\\.bar" },
                 new object[] { ReplacerStash.TrailingSpaces, @"aaa\ ", "aaa " },
                 new object[] { ReplacerStash.EscapedSpaces, @"a\ b", "a b" },
                 new object[] { ReplacerStash.Metacharacters, @"a $ . | * + ( ) { ^ b", @"a \$ \. \| \* \+ \( \) \{ \^ b" },
