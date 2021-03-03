@@ -46,7 +46,7 @@ namespace Ignore
         /// </summary>
         public static readonly Replacer LeadingDoubleStar = new Replacer(
             name: nameof(LeadingDoubleStar),
-            regex: new Regex(@"^\*\*/", RegexOptions.Compiled),
+            regex: new Regex(@"^(\*\*/|\*\*)", RegexOptions.Compiled),
             replacer: match => @".*");
 
         /// <summary>
