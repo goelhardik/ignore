@@ -11,6 +11,7 @@ namespace Ignore
         {
             ReplacerStash.TrailingSpaces,
             ReplacerStash.EscapedSpaces,
+            ReplacerStash.Dot,
 
             // probably not needed
             // ReplacerStash.Metacharacters,

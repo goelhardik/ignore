@@ -46,7 +46,7 @@ namespace Ignore
         /// </summary>
         public static readonly Replacer LeadingDoubleStar = new Replacer(
             name: nameof(LeadingDoubleStar),
-            regex: new Regex(@"^\*\*/", RegexOptions.Compiled),
+            regex: new Regex(@"^(\*\*/|\*\*)", RegexOptions.Compiled),
             replacer: match => @".*");
 
         /// <summary>
@@ -127,5 +127,10 @@ namespace Ignore
             name: nameof(Ending),
             regex: new Regex(@"([^/$]+)$"),
             replacer: match => $"{match.Groups[1]}$");
+
+        public static readonly Replacer Dot = new Replacer(
+            name: nameof(Dot),
+            regex: new Regex(@"\."),
+            replacer: match => @"\.");
     }
 }
