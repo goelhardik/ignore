@@ -177,6 +177,14 @@ foo?
             new[] { "src/foo", "foo/bar", "src/bar/foo" });
 
         [Fact]
+        public void LeadingDoubleStar2() => GitBasedTest(
+            @"""
+# leading **
+**foo.txt
+""",
+            new[] { "src/foo.txt", "foo/bar/foo.txt", "foo.txt", "foo.bar" });
+
+        [Fact]
         public void MiddleDoubleStar() => GitBasedTest(
             @"""
 # middle **
