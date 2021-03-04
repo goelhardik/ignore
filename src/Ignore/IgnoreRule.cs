@@ -19,11 +19,11 @@ namespace Ignore
             ReplacerStash.NonLeadingSingleStar,
             ReplacerStash.LeadingSingleStar,
             ReplacerStash.LeadingDoubleStar,
-            ReplacerStash.LeadingSlash,
 
             // probably not needed
             // ReplacerStash.MetacharacterSlashAfterLeadingSlash,
             ReplacerStash.MiddleDoubleStar,
+            ReplacerStash.LeadingSlash,
             ReplacerStash.TrailingDoubleStar,
             ReplacerStash.MiddleSlash,
 

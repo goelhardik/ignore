@@ -57,7 +57,7 @@ namespace Ignore
         public static readonly Replacer MiddleDoubleStar = new Replacer(
             name: nameof(MiddleDoubleStar),
             regex: new Regex(@"(?<=/)\*\*/", RegexOptions.Compiled),
-            replacer: match => @".*/?");
+            replacer: match => @"(.*/)?");
 
         /// <summary>
         /// From gitignore:

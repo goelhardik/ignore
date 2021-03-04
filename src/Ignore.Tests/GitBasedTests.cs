@@ -185,6 +185,14 @@ foo?
             new[] { "src/foo.txt", "foo/bar/foo.txt", "foo.txt", "foo.bar" });
 
         [Fact]
+        public void LeadingDoubleStar3() => GitBasedTest(
+            @"""
+/**/foo.json
+/**/*_generated.csproj
+""",
+            new[] { "foo.json", "bar/foo.json", "tar/bar/foo.json", "_foo.json", "bar/car_foo.json", "x_generated.csproj", "foo/x_generated.csproj", "_generated.csproj" });
+
+        [Fact]
         public void MiddleDoubleStar() => GitBasedTest(
             @"""
 # middle **
