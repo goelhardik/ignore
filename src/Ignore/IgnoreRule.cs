@@ -5,9 +5,7 @@ namespace Ignore
 
     public class IgnoreRule
     {
-        private readonly Regex parsedRegex;
-
-        private readonly List<Replacer> replacers = new List<Replacer>
+        private static readonly List<Replacer> Replacers = new List<Replacer>
         {
             ReplacerStash.TrailingSpaces,
             ReplacerStash.EscapedSpaces,
@@ -32,6 +30,8 @@ namespace Ignore
             ReplacerStash.NoTrailingSlash,
             ReplacerStash.Ending
         };
+
+        private readonly Regex parsedRegex;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IgnoreRule"/> class.
@@ -65,7 +65,7 @@ namespace Ignore
                 pattern = pattern.Substring(1);
             }
 
-            foreach (var replacer in replacers)
+            foreach (var replacer in Replacers)
             {
                 pattern = replacer.Invoke(pattern);
             }
