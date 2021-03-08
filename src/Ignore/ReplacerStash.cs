@@ -71,6 +71,15 @@ namespace Ignore
             replacer: match => @".*$");
 
         /// <summary>
+        /// Undocumented cases like foo/**.ps
+        /// Treat ** as match any character other than /.
+        /// </summary>
+        public static readonly Replacer OtherDoubleStar = new Replacer(
+            name: nameof(TrailingDoubleStar),
+            regex: new Regex(@"\*\*", RegexOptions.Compiled),
+            replacer: match => @"[^/]*");
+
+        /// <summary>
         /// If there is a separator at the beginning or middle (or both) of the pattern,
         /// then the pattern is relative to the directory level of the particular .gitignore file itself.
         /// Otherwise the pattern may also match at any level below the .gitignore level.

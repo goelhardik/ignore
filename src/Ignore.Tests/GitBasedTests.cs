@@ -209,6 +209,14 @@ foo/**/bar
             new[] { "foo/bar", "foo/tar/bar", "foo/har/tar/bar", "src/foo/tar/bar", "src/foo/har/char/tar/har/bar" });
 
         [Fact]
+        public void MiddleDoubleStar_3() => GitBasedTest(
+            @"""
+# middle **
+foo/**.ps
+""",
+            new[] { "foo/bar/tar.ps", "foo/bar.ps", "foo/bar.js", "foo.ps" });
+
+        [Fact]
         public void MiddleDoubleStar_Complex() => GitBasedTest(
             @"""
 # middle **
