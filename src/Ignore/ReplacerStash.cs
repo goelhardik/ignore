@@ -15,10 +15,10 @@ namespace Ignore
             regex: new Regex(@"\\\s", RegexOptions.Compiled),
             replacer: match => " ");
 
-        public static readonly Replacer Metacharacters = new Replacer(
-            name: nameof(Metacharacters),
-            regex: new Regex(@"[\\$.|*+(){^]", RegexOptions.Compiled),
-            replacer: match => $"\\{match}");
+        public static readonly Replacer LiteralPlus = new Replacer(
+            name: nameof(LiteralPlus),
+            regex: new Regex(@"\+", RegexOptions.Compiled),
+            replacer: match => @"\+");
 
         // a ? matches any character other than a /
         public static readonly Replacer QuestionMark = new Replacer(
@@ -137,8 +137,8 @@ namespace Ignore
             regex: new Regex(@"([^/$]+)$"),
             replacer: match => $"{match.Groups[1]}$");
 
-        public static readonly Replacer Dot = new Replacer(
-            name: nameof(Dot),
+        public static readonly Replacer LiteralDot = new Replacer(
+            name: nameof(LiteralDot),
             regex: new Regex(@"\."),
             replacer: match => @"\.");
     }
