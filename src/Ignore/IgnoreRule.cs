@@ -23,6 +23,7 @@ namespace Ignore
             ReplacerStash.MiddleDoubleStar,
             ReplacerStash.LeadingSlash,
             ReplacerStash.TrailingDoubleStar,
+            ReplacerStash.OtherDoubleStar,
             ReplacerStash.MiddleSlash,
 
             // probably not needed
