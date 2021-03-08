@@ -12,7 +12,7 @@ namespace Ignore.Tests
             {
                 new object[] { ReplacerStash.TrailingSpaces, @"aaa\ ", "aaa " },
                 new object[] { ReplacerStash.EscapedSpaces, @"a\ b", "a b" },
-                new object[] { ReplacerStash.Metacharacters, @"a $ . | * + ( ) { ^ b", @"a \$ \. \| \* \+ \( \) \{ \^ b" },
+                new object[] { ReplacerStash.LiteralPlus, @"*+", @"*\+" },
                 new object[] { ReplacerStash.QuestionMark, @"a?", @"a[^/]" },
                 new object[] { ReplacerStash.LeadingSlash, @"/a/b", @"^a/b" },
                 new object[] { ReplacerStash.LeadingSlash, @"a/b", @"a/b" },
@@ -45,7 +45,7 @@ namespace Ignore.Tests
                 new object[] { ReplacerStash.LeadingSingleStar, @"*.c", @".*.c" },
                 new object[] { ReplacerStash.LeadingSingleStar, @"**/c", @"**/c" },
                 new object[] { ReplacerStash.LeadingSingleStar, @"a*/c", @"a*/c" },
-                new object[] { ReplacerStash.Dot, @".a*./c", @"\.a*\./c" },
+                new object[] { ReplacerStash.LiteralDot, @".a*./c", @"\.a*\./c" },
             };
 
         [Theory]

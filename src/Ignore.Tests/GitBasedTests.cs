@@ -136,6 +136,13 @@ foo*
             new[] { "foo", "bar" });
 
         [Fact]
+        public void LiteralPlus() => GitBasedTest(
+            @"""
+*+
+""",
+            new[] { "foo", "bar+", "foo+bar" });
+
+        [Fact]
         public void MiddleStar() => GitBasedTest(
             @"""
 # intermediate *

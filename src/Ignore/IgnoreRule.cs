@@ -9,7 +9,8 @@ namespace Ignore
         {
             ReplacerStash.TrailingSpaces,
             ReplacerStash.EscapedSpaces,
-            ReplacerStash.Dot,
+            ReplacerStash.LiteralDot,
+            ReplacerStash.LiteralPlus,
 
             // probably not needed
             // ReplacerStash.Metacharacters,
