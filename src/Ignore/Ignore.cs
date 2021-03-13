@@ -1,6 +1,8 @@
 ﻿namespace Ignore
 {
+    using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
 
     public class Ignore
@@ -82,6 +84,12 @@
 
         private bool IsPathIgnored(string path)
         {
+            if (Path.IsPathRooted(path))
+            {
+                throw new ArgumentException(
+                    $"Found rooted path {path}. Rooted paths are not supported. Use relative paths.");
+            }
+
             var ignore = false;
             foreach (var rule in rules)
             {
