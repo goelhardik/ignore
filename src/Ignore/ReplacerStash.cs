@@ -100,8 +100,8 @@ namespace Ignore
         /// </summary>
         public static readonly Replacer TrailingSlash = new Replacer(
             name: nameof(TrailingSlash),
-            regex: new Regex(@"([^/]+)/$"),
-            replacer: match => $"{match.Groups[1]}/$");
+            regex: new Regex(@"^([^/]+)/$"),
+            replacer: match => $"/{match.Groups[1]}/|^{match.Groups[1]}/");
 
         /// <summary>
         /// From gitignore:
