@@ -277,7 +277,26 @@ src/foo/
 # trailing **
 src/foo/
 """,
-            new[] { "src/foo/" });
+            new[] { "src/foo/", "foo/xy.txt", "src/foo/bar", "tar/src/foo/bar" });
+
+        [Fact]
+        public void TrailingSlash_3() => GitBasedTest(
+            @"""
+# trailing **
+src/
+""",
+            new[] { "src/foo", "foo/src/bar", "mysrc/foo" });
+
+        [Fact]
+        public void TrailingSlash_4() => GitBasedTest(
+            @"""
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/foo
+""",
+            new[] { "foo/bar", "WpfObj/bar", "MyLog/foo", "Logs/foo", "src/Logs/foo/bar" });
 
         [Fact]
         public void NoopNegate() => GitBasedTest(

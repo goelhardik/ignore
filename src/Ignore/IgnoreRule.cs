@@ -26,9 +26,7 @@ namespace Ignore
             ReplacerStash.TrailingDoubleStar,
             ReplacerStash.OtherDoubleStar,
             ReplacerStash.MiddleSlash,
-
-            // probably not needed
-            // ReplacerStash.TrailingSlash,
+            ReplacerStash.TrailingSlash,
             ReplacerStash.NoTrailingSlash,
             ReplacerStash.Ending
         };
@@ -38,7 +36,7 @@ namespace Ignore
         /// <summary>
         /// Initializes a new instance of the <see cref="IgnoreRule"/> class.
         /// Parses the given pattern as per .gitignore spec.
-        /// https://git-scm.com/docs/gitignore#_pattern_format
+        /// https://git-scm.com/docs/gitignore#_pattern_format.
         /// </summary>
         /// <param name="pattern">Pattern to parse.</param>
         public IgnoreRule(string pattern)
