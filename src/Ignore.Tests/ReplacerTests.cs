@@ -32,7 +32,7 @@ namespace Ignore.Tests
                 new object[] { ReplacerStash.MiddleSlash, @"/a/", @"/a/" },
                 new object[] { ReplacerStash.MiddleSlash, @"foo*", @"foo*" },
                 new object[] { ReplacerStash.MiddleSlash, @"foo[^/]*", @"foo[^/]*" },
-                new object[] { ReplacerStash.TrailingSlash, @"/a/", @"/a/$" },
+                new object[] { ReplacerStash.TrailingSlash, @"/a/", @"/a/" },
                 new object[] { ReplacerStash.NoTrailingSlash, @"/a/", @"/a/" },
                 new object[] { ReplacerStash.NoTrailingSlash, @"/a", @"/a(/.*)?$" },
                 new object[] { ReplacerStash.NoTrailingSlash, @"a", @"a(/.*)?$" },
