@@ -47,11 +47,6 @@ namespace Ignore
                 return;
             }
 
-            // A line starting with # serves as a comment. Put a backslash ("\") in front of the first hash for patterns that begin with a hash.
-            if (pattern.StartsWith("#"))
-            {
-                return;
-            }
 
             // Account for escaped # and !, remove the leading backslash.
             // Also either a pattern will start with \ or with !
