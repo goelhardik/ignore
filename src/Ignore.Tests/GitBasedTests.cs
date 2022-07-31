@@ -48,7 +48,7 @@ foo
 # exclude foo/bar
 foo/bar
 """,
-            new[] { "src/foo/bar", "foo/bar/", "foo/bar/char", "src/bar/char", "a/foo/bar/char" });
+            new[] { "src/foo/bar", "foo/bar/", "foo/bar/char", "src/bar/char", "a/foo/bar/char", "src/testfoo/bar" });
 
         [Fact]
         public void SimpleIgnore_Dir() => GitBasedTest(
@@ -56,6 +56,13 @@ foo/bar
 foo/
 """,
             new[] { "foo/bar", "bar/foo", "foo/har", "tar/foo/bar", "tar/bar/foo" });
+
+        [Fact]
+        public void SimpleIgnore_Prefix() => GitBasedTest(
+            @"""
+foo
+""",
+            new[] { "src/testfoo", "testfoo", "testfoox", "bar/foo", "bar/tfoo" });
 
         [Fact]
         public void SimpleIgnore_Dotfiles() => GitBasedTest(
