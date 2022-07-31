@@ -27,6 +27,7 @@ namespace Ignore
             ReplacerStash.OtherDoubleStar,
             ReplacerStash.MiddleSlash,
             ReplacerStash.TrailingSlash,
+            ReplacerStash.NoSlash,
             ReplacerStash.NoTrailingSlash,
             ReplacerStash.Ending
         };

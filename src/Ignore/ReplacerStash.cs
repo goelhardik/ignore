@@ -101,7 +101,7 @@ namespace Ignore
         public static readonly Replacer TrailingSlash = new Replacer(
             name: nameof(TrailingSlash),
             regex: new Regex(@"^([^/]+)/$"),
-            replacer: match => $"/{match.Groups[1]}/|^{match.Groups[1]}/");
+            replacer: match => $@"(/|^){match.Groups[1]}/");
 
         /// <summary>
         /// From gitignore:
@@ -141,5 +141,10 @@ namespace Ignore
             name: nameof(LiteralDot),
             regex: new Regex(@"\."),
             replacer: match => @"\.");
+
+        public static readonly Replacer NoSlash = new Replacer(
+            name: nameof(NoSlash),
+            regex: new Regex(@"(^[^/]*$)"),
+            replacer: match => $"(^|/){match.Groups[1]}");
     }
 }
