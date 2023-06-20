@@ -3,6 +3,8 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <LangVersion>8.0</LangVersion>
+    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)/ignore.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
 
     <!-- Prevent NerdBank from loading in mono (which omnisharp uses on linux) /-->
     <GenerateAssemblyVersionInfo Condition="'$(MSBuildRuntimeType)'=='Mono'">false</GenerateAssemblyVersionInfo>
