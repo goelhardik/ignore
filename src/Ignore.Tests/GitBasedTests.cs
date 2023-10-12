@@ -86,6 +86,13 @@ foo
             new[] { "file.mm", "commonFile.txt" });
 
         [Fact]
+        public void IgnoreDotFiles() => GitBasedTest(
+@"""
+.*
+""",
+new[] { ".dotfile", "no.dotfile", "foo/.dotfile", "foo/no.dotfile", ".bar/nodot", ".bar/foo", "foo/.dot/adf", "bar/foo" });
+
+        [Fact]
         public void StartsWithStar() => GitBasedTest(
             @"""
 *.cs
