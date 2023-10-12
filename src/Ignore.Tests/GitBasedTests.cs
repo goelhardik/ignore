@@ -90,7 +90,7 @@ foo
 @"""
 .*
 """,
-new[] { ".dotfile", "no.dotfile", "foo/.dotfile", "foo/no.dotfile" });
+new[] { ".dotfile", "no.dotfile", "foo/.dotfile", "foo/no.dotfile", ".bar/nodot", ".bar/foo", "foo/.dot/adf", "bar/foo" });
 
         [Fact]
         public void StartsWithStar() => GitBasedTest(
