@@ -5,6 +5,11 @@ namespace Ignore
 
     public class IgnoreRule
     {
+        /// <summary>
+        /// Replacers are applied in the order they are placed here for coming
+        /// up with the final regex pattern. Changing the order may change the
+        /// behavior. Relying on unit tests here.
+        /// </summary>
         private static readonly List<Replacer> Replacers = new List<Replacer>
         {
             ReplacerStash.TrailingSpaces,
@@ -15,6 +20,7 @@ namespace Ignore
             // probably not needed
             // ReplacerStash.Metacharacters,
             ReplacerStash.QuestionMark,
+            ReplacerStash.NoSlash,
             ReplacerStash.NonLeadingSingleStar,
             ReplacerStash.LeadingSingleStar,
             ReplacerStash.LeadingDoubleStar,
@@ -27,7 +33,6 @@ namespace Ignore
             ReplacerStash.OtherDoubleStar,
             ReplacerStash.MiddleSlash,
             ReplacerStash.TrailingSlash,
-            ReplacerStash.NoSlash,
             ReplacerStash.NoTrailingSlash,
             ReplacerStash.Ending
         };
