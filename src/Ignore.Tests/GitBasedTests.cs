@@ -357,6 +357,18 @@ foo
 """,
             new[] { "foo.py", "bar.p", "foo.pyc", "foo.pyco", "foo.pyd" });
 
+        [Fact]
+        public void Should_KnowTheDifference_Between_Rooted_And_Non_Rooted_Path_Rooted() => GitBasedTest(@"""
+# rooted path
+/Executables/
+""", new string[] { "/Executables/HelloWorld.exe", "/test/Executables/HelloWorld.exe" });
+
+        [Fact]
+        public void Should_KnowTheDifference_Between_Rooted_And_Non_Rooted_Path_NonRooted() => GitBasedTest(
+                                             @"""
+# non-rooted path
+Executables/
+""", new string[]{ "/Executables/HelloWorld.exe", "/test/Executables/HelloWorld.exe" });
         public void Dispose()
         {
             gitFixture.DeleteRepoDirectory();
