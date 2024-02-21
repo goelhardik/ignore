@@ -37,6 +37,6 @@
 
   <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="All" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="All" Condition="'$(StyleCopEnabled)'=='true'" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" PrivateAssets="All" Condition="'$(StyleCopEnabled)'=='true'" />
   </ItemGroup>
 </Project>
