@@ -1,7 +1,7 @@
 # Ignore
 ![Build](https://github.com/goelhardik/ignore/workflows/Build/badge.svg?branch=main)
 [![codecov](https://codecov.io/gh/goelhardik/ignore/branch/main/graph/badge.svg?token=5YE7LBW8K0)](https://codecov.io/gh/goelhardik/ignore)
-[![Nuget](https://img.shields.io/nuget/v/Ignore)](https://www.nuget.org/packages/Ignore)
+[![NuGet](https://img.shields.io/nuget/v/Ignore)](https://www.nuget.org/packages/Ignore)
 
 .gitignore based parser implemented in C# according to the [.gitignore spec 2.29.2](https://git-scm.com/docs/gitignore).
 
