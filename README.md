@@ -41,7 +41,7 @@ var isIgnored = ignore.IsIgnored("x.user");
 
 ## Developing
 
-Ignore uses `netstandard2.0` for the main library and `netcoreapp3.1` for the unit tests (Xunit).
+Ignore uses `netstandard2.0` for the main library and `net6.0` for the unit tests (Xunit).
 
 ### Build
 
