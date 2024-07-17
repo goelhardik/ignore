@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
+        <Description>.gitignore based parser implemented in C# according to the .gitignore spec 2.29.2.</Description>
         <PackageTags>C# gitignore</PackageTags>
         <PackageProjectUrl>https://github.com/goelhardik/ignore</PackageProjectUrl>
         <RepositoryUrl>https://github.com/goelhardik/ignore.git</RepositoryUrl>
