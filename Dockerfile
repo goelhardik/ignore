@@ -1,5 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 
+RUN curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -Channel 6.0 -Runtime dotnet -InstallDir /usr/share/dotnet
+
 COPY . /app/
 
 WORKDIR /app
