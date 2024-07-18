@@ -12,4 +12,4 @@ RUN dotnet restore
 
 RUN dotnet build --configuration Release --no-restore
 
-ENTRYPOINT ["dotnet", "test", "--configuration", "Release", "--no-build", "--verbosity", "normal", "--collect:\"XPlat Code Coverage\"", "--", "-r", "/coverage"]
+ENTRYPOINT ["dotnet", "test", "--configuration", "Release", "--no-build", "--verbosity", "normal", "--collect:\"XPlat Code Coverage\"", "--results-directory", "/coverage"]
