@@ -1,4 +1,5 @@
 # Ignore
+
 ![Build](https://github.com/goelhardik/ignore/workflows/Build/badge.svg?branch=main)
 [![codecov](https://codecov.io/gh/goelhardik/ignore/branch/main/graph/badge.svg?token=5YE7LBW8K0)](https://codecov.io/gh/goelhardik/ignore)
 [![NuGet](https://img.shields.io/nuget/v/Ignore)](https://www.nuget.org/packages/Ignore)
@@ -11,7 +12,7 @@ The library is tested against real `git status` outputs. The tests use `LibGit2S
 
 Ignore can be installed from NuGet.
 
-```
+```PowerShell
 Install-Package Ignore
 ```
 
@@ -41,13 +42,13 @@ var isIgnored = ignore.IsIgnored("x.user");
 
 ## Developing
 
-Ignore uses `netstandard2.0` for the main library and `net6.0` for the unit tests (Xunit).
+Ignore targets `netstandard2.0` and `net8.0` for the main library and uses `net6.0` and `net8.0` for the unit tests (Xunit).
 
 ### Build
 
 From the root directory
 
-```
+```console
 dotnet build
 ```
 
@@ -55,6 +56,6 @@ dotnet build
 
 From the root directory
 
-```
+```console
 dotnet test
 ```
